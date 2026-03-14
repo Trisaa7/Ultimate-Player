@@ -43,9 +43,10 @@ body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;over
 .hd h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,9vw,5.5rem);letter-spacing:.08em;color:var(--lime);background:linear-gradient(135deg,#fff 25%,var(--lime) 60%,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
 .hd-desc{font-size:var(--fs-sm);color:var(--muted);margin-top:10px;font-style:italic;letter-spacing:.04em;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.6}
 .lang-switcher{position:absolute;top:16px;right:20px;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;z-index:10}
-.lang-btn{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--muted);font-family:'Barlow',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.1em;padding:4px 9px;border-radius:6px;cursor:pointer;transition:border-color .15s,color .15s,background .15s;text-transform:uppercase}
-.lang-btn:hover{border-color:rgba(126,211,33,.4);color:var(--lime)}
-.lang-btn.active{border-color:var(--lime);color:var(--lime);background:rgba(126,211,33,.08)}
+.lang-btn{background:rgba(255,255,255,.04);border:1px solid var(--border);padding:6px 10px;border-radius:8px;cursor:pointer;transition:border-color .15s,background .15s,transform .15s;line-height:0;display:inline-flex;align-items:center;justify-content:center}
+.lang-btn img{display:block;border-radius:2px}
+.lang-btn:hover{border-color:rgba(126,211,33,.4);transform:scale(1.1)}
+.lang-btn.active{border-color:var(--lime);background:rgba(126,211,33,.1);transform:scale(1.05)}
 
 /* ── LAYOUT ── */
 .wrap{position:relative;z-index:1;max-width:1280px;margin:0 auto;display:flex;flex-direction:column;min-height:80vh}
@@ -274,6 +275,21 @@ body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;over
 .si:focus-visible{outline:2px solid var(--lime);outline-offset:-2px}
 .hs:focus-visible .hs-btn{outline:2px solid var(--lime);outline-offset:2px}
 
+/* ── FOOTER ── */
+.site-footer{background:var(--bg);border-top:1px solid var(--border);padding:20px 24px;text-align:center;position:relative;z-index:1}
+.footer-inner{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+.footer-copy{font-size:var(--fs-xs);color:var(--muted);letter-spacing:.04em}
+.footer-sep{color:var(--muted);font-size:var(--fs-xs)}
+.footer-link{font-size:var(--fs-xs);color:var(--muted);text-decoration:none;letter-spacing:.04em;transition:color .15s}
+.footer-link:hover{color:var(--lime);text-decoration:underline}
+.legal-modal{max-width:600px}
+.legal-body{font-size:var(--fs-sm);color:var(--text);line-height:1.7}
+.legal-body h3{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--lime);letter-spacing:.06em;margin:18px 0 8px}
+.legal-body h3:first-child{margin-top:0}
+.legal-body p{margin:0 0 10px;color:var(--muted)}
+.legal-body a{color:var(--lime);text-decoration:underline}
+.legal-body .legal-placeholder{background:rgba(126,211,33,.06);border:1px dashed rgba(126,211,33,.25);border-radius:var(--radius-sm);padding:14px 16px;color:var(--lime);font-size:var(--fs-sm);font-style:italic;margin:6px 0 12px}
+
 /* ── REDUCED MOTION ── */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
@@ -286,12 +302,12 @@ body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;over
 
 <header class="hd">
   <nav class="lang-switcher" aria-label="Language">
-    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
-    <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">FR</button>
-    <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
-    <button class="lang-btn" data-lang="de" onclick="setLang('de')">DE</button>
-    <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
-    <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')"><img src="https://flagcdn.com/w40/gb.png" alt="EN" width="20" height="15"></button>
+    <button class="lang-btn" data-lang="fr" onclick="setLang('fr')"><img src="https://flagcdn.com/w40/fr.png" alt="FR" width="20" height="15"></button>
+    <button class="lang-btn" data-lang="es" onclick="setLang('es')"><img src="https://flagcdn.com/w40/es.png" alt="ES" width="20" height="15"></button>
+    <button class="lang-btn" data-lang="de" onclick="setLang('de')"><img src="https://flagcdn.com/w40/de.png" alt="DE" width="20" height="15"></button>
+    <button class="lang-btn" data-lang="it" onclick="setLang('it')"><img src="https://flagcdn.com/w40/it.png" alt="IT" width="20" height="15"></button>
+    <button class="lang-btn" data-lang="pt" onclick="setLang('pt')"><img src="https://flagcdn.com/w40/pt.png" alt="PT" width="20" height="15"></button>
   </nav>
   <div class="hd-tag" id="hdTag"></div>
   <h1>ULTIMATE PLAYER</h1>
@@ -421,6 +437,26 @@ body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;over
   </div>
 </div>
 
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span class="footer-copy">&copy; <span id="footerYear">2026</span> Ultimate Player</span>
+    <span class="footer-sep">·</span>
+    <a href="#" class="footer-link" id="legalLink" onclick="openLegal(event)"></a>
+  </div>
+</footer>
+
+<div class="overlay" id="legalOverlay" onclick="closeLegalOut(event)" role="dialog" aria-modal="true" aria-labelledby="legalTitle" aria-hidden="true">
+  <div class="modal legal-modal">
+    <div class="modal-top">
+      <div>
+        <div class="modal-title" id="legalTitle"></div>
+      </div>
+      <button class="modal-close" onclick="closeLegal()" aria-label="Close">&#10005;</button>
+    </div>
+    <div class="modal-body legal-body" id="legalBody"></div>
+  </div>
+</div>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -452,6 +488,8 @@ const TRANSLATIONS = {
     "toastErr": "❌ Erreur",
     "shareText": "🏆 Mon joueur ultime :",
     "orType": "ou tape un nom :",
+    "legalLink": "Mentions légales",
+    "legalTitle": "MENTIONS LÉGALES",
     "attrs": [
       {"id":"heading","label":"Jeu de tête","icon":"⬆️","desc":"Domination dans les airs"},
       {"id":"passing","label":"Passes","icon":"🎯","desc":"Vision & qualité de passe"},
@@ -491,6 +529,8 @@ const TRANSLATIONS = {
     "toastErr": "❌ Error",
     "shareText": "🏆 My ultimate player:",
     "orType": "or type a name:",
+    "legalLink": "Legal notice",
+    "legalTitle": "LEGAL NOTICE",
     "attrs": [
       {"id":"heading","label":"Heading","icon":"⬆️","desc":"Aerial dominance"},
       {"id":"passing","label":"Passing","icon":"🎯","desc":"Vision & pass quality"},
@@ -530,6 +570,8 @@ const TRANSLATIONS = {
     "toastErr": "❌ Error",
     "shareText": "🏆 Mi jugador definitivo:",
     "orType": "o escribe un nombre:",
+    "legalLink": "Aviso legal",
+    "legalTitle": "AVISO LEGAL",
     "attrs": [
       {"id":"heading","label":"Cabeceo","icon":"⬆️","desc":"Dominio aéreo"},
       {"id":"passing","label":"Pases","icon":"🎯","desc":"Visión & calidad de pase"},
@@ -569,6 +611,8 @@ const TRANSLATIONS = {
     "toastErr": "❌ Fehler",
     "shareText": "🏆 Mein ultimativer Spieler:",
     "orType": "oder Name eingeben:",
+    "legalLink": "Impressum",
+    "legalTitle": "IMPRESSUM",
     "attrs": [
       {"id":"heading","label":"Kopfball","icon":"⬆️","desc":"Luftdominanz"},
       {"id":"passing","label":"Passen","icon":"🎯","desc":"Vision & Passqualität"},
@@ -608,6 +652,8 @@ const TRANSLATIONS = {
     "toastErr": "❌ Errore",
     "shareText": "🏆 Il mio giocatore definitivo:",
     "orType": "o inserisci un nome:",
+    "legalLink": "Note legali",
+    "legalTitle": "NOTE LEGALI",
     "attrs": [
       {"id":"heading","label":"Colpo di testa","icon":"⬆️","desc":"Dominio aereo"},
       {"id":"passing","label":"Passaggi","icon":"🎯","desc":"Visione & qualità di passaggio"},
@@ -647,6 +693,8 @@ const TRANSLATIONS = {
     "toastErr": "❌ Erro",
     "shareText": "🏆 O meu jogador definitivo:",
     "orType": "ou escreve um nome:",
+    "legalLink": "Avisos legais",
+    "legalTitle": "AVISOS LEGAIS",
     "attrs": [
       {"id":"heading","label":"Cabeceio","icon":"⬆️","desc":"Domínio aéreo"},
       {"id":"passing","label":"Passe","icon":"🎯","desc":"Visão & qualidade de passe"},
@@ -794,6 +842,9 @@ function applyLang() {
   const _dl = $id('btnDl');     if (_dl) _dl.textContent = T.btnDl;
   const _sh = $id('btnShare');  if (_sh) _sh.textContent = T.btnShare;
   $id('manualInput').placeholder = T.inputPh;
+  // Footer & legal
+  $id('legalLink').textContent = T.legalLink;
+  $id('footerYear').textContent = new Date().getFullYear();
 }
 
 // ── RENDER ──
@@ -1220,6 +1271,101 @@ function showToast(msg) {
   toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
 }
 
+// ── LEGAL MODAL ──
+const LEGAL_CONTENT = {
+  fr: `
+    <h3>Éditeur du site</h3>
+    <p>Contact : <a href="mailto:tristantrisaa@gmail.com">tristantrisaa@gmail.com</a></p>
+    <h3>Hébergeur</h3>
+    <p>GitHub, Inc.<br>Distribué via Cloudflare, Inc.</p>
+    <h3>Propriété intellectuelle</h3>
+    <p>L'ensemble du contenu de ce site (textes, images, code) est protégé par le droit d'auteur. Toute reproduction sans autorisation préalable est interdite.</p>
+    <h3>Données personnelles</h3>
+    <p>Ce site ne collecte aucune donnée personnelle. Aucun cookie tiers, aucun outil d'analyse ni aucun traceur publicitaire n'est utilisé. Seul le stockage local du navigateur (localStorage) est utilisé pour sauvegarder votre préférence de langue, ce qui est strictement nécessaire au fonctionnement du site.</p>
+    <h3>Responsabilité</h3>
+    <p>Ce site est un outil de divertissement. Les noms de joueurs cités appartiennent à leurs propriétaires respectifs. Ce site n'est affilié à aucune organisation sportive.</p>
+  `,
+  en: `
+    <h3>Site editor</h3>
+    <p>Contact: <a href="mailto:tristantrisaa@gmail.com">tristantrisaa@gmail.com</a></p>
+    <h3>Hosting provider</h3>
+    <p>GitHub, Inc.<br>Distributed via Cloudflare, Inc.</p>
+    <h3>Intellectual property</h3>
+    <p>All content on this site (text, images, code) is protected by copyright. Reproduction without prior authorization is prohibited.</p>
+    <h3>Personal data</h3>
+    <p>This site does not collect any personal data. No third-party cookies, analytics tools, or advertising trackers are used. Only browser local storage (localStorage) is used to save your language preference, which is strictly necessary for the site to function.</p>
+    <h3>Disclaimer</h3>
+    <p>This site is an entertainment tool. Player names mentioned belong to their respective owners. This site is not affiliated with any sports organization.</p>
+  `,
+  es: `
+    <h3>Editor del sitio</h3>
+    <p>Contacto: <a href="mailto:tristantrisaa@gmail.com">tristantrisaa@gmail.com</a></p>
+    <h3>Proveedor de alojamiento</h3>
+    <p>GitHub, Inc.<br>Distribuido por Cloudflare, Inc.</p>
+    <h3>Propiedad intelectual</h3>
+    <p>Todo el contenido de este sitio (textos, imágenes, código) está protegido por derechos de autor. Queda prohibida su reproducción sin autorización previa.</p>
+    <h3>Datos personales</h3>
+    <p>Este sitio no recopila ningún dato personal. No se utilizan cookies de terceros, herramientas de análisis ni rastreadores publicitarios. Solo se utiliza el almacenamiento local del navegador (localStorage) para guardar su preferencia de idioma.</p>
+    <h3>Responsabilidad</h3>
+    <p>Este sitio es una herramienta de entretenimiento. Los nombres de jugadores mencionados pertenecen a sus respectivos propietarios. Este sitio no está afiliado a ninguna organización deportiva.</p>
+  `,
+  de: `
+    <h3>Herausgeber der Website</h3>
+    <p>Kontakt: <a href="mailto:tristantrisaa@gmail.com">tristantrisaa@gmail.com</a></p>
+    <h3>Hosting-Anbieter</h3>
+    <p>GitHub, Inc.<br>Bereitgestellt über Cloudflare, Inc.</p>
+    <h3>Geistiges Eigentum</h3>
+    <p>Alle Inhalte dieser Website (Texte, Bilder, Code) sind urheberrechtlich geschützt. Eine Vervielfältigung ohne vorherige Genehmigung ist untersagt.</p>
+    <h3>Persönliche Daten</h3>
+    <p>Diese Website erhebt keine persönlichen Daten. Es werden keine Cookies von Drittanbietern, Analysetools oder Werbe-Tracker verwendet. Nur der lokale Speicher des Browsers (localStorage) wird verwendet, um Ihre Spracheinstellung zu speichern.</p>
+    <h3>Haftung</h3>
+    <p>Diese Website ist ein Unterhaltungstool. Genannte Spielernamen gehören ihren jeweiligen Eigentümern. Diese Website ist mit keiner Sportorganisation verbunden.</p>
+  `,
+  it: `
+    <h3>Editore del sito</h3>
+    <p>Contatto: <a href="mailto:tristantrisaa@gmail.com">tristantrisaa@gmail.com</a></p>
+    <h3>Provider di hosting</h3>
+    <p>GitHub, Inc.<br>Distribuito tramite Cloudflare, Inc.</p>
+    <h3>Proprietà intellettuale</h3>
+    <p>Tutti i contenuti di questo sito (testi, immagini, codice) sono protetti dal diritto d'autore. La riproduzione senza autorizzazione è vietata.</p>
+    <h3>Dati personali</h3>
+    <p>Questo sito non raccoglie alcun dato personale. Non vengono utilizzati cookie di terze parti, strumenti di analisi o tracker pubblicitari. Solo la memoria locale del browser (localStorage) viene utilizzata per salvare la preferenza di lingua.</p>
+    <h3>Responsabilità</h3>
+    <p>Questo sito è uno strumento di intrattenimento. I nomi dei giocatori menzionati appartengono ai rispettivi proprietari. Questo sito non è affiliato ad alcuna organizzazione sportiva.</p>
+  `,
+  pt: `
+    <h3>Editor do site</h3>
+    <p>Contacto: <a href="mailto:tristantrisaa@gmail.com">tristantrisaa@gmail.com</a></p>
+    <h3>Provedor de alojamento</h3>
+    <p>GitHub, Inc.<br>Distribuído por Cloudflare, Inc.</p>
+    <h3>Propriedade intelectual</h3>
+    <p>Todo o conteúdo deste site (textos, imagens, código) é protegido por direitos de autor. A reprodução sem autorização prévia é proibida.</p>
+    <h3>Dados pessoais</h3>
+    <p>Este site não recolhe quaisquer dados pessoais. Não são utilizados cookies de terceiros, ferramentas de análise ou rastreadores publicitários. Apenas o armazenamento local do navegador (localStorage) é utilizado para guardar a sua preferência de idioma.</p>
+    <h3>Responsabilidade</h3>
+    <p>Este site é uma ferramenta de entretenimento. Os nomes de jogadores mencionados pertencem aos respetivos proprietários. Este site não é afiliado a nenhuma organização desportiva.</p>
+  `
+};
+
+function openLegal(e) {
+  e.preventDefault();
+  $id('legalTitle').textContent = T.legalTitle;
+  $id('legalBody').innerHTML = LEGAL_CONTENT[currentLang] || LEGAL_CONTENT.en;
+  const ov = $id('legalOverlay');
+  ov.classList.add('open');
+  ov.setAttribute('aria-hidden', 'false');
+}
+
+function closeLegal() {
+  const ov = $id('legalOverlay');
+  ov.classList.remove('open');
+  ov.setAttribute('aria-hidden', 'true');
+}
+
+function closeLegalOut(e) {
+  if (e.target === e.currentTarget) closeLegal();
+}
+
 // ── INIT ──
 document.addEventListener('DOMContentLoaded', () => {
   document.documentElement.lang = currentLang;
@@ -1233,9 +1379,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Keyboard: modal
 document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    if ($id('legalOverlay').classList.contains('open')) { closeLegal(); return; }
+    if ($id('overlay').classList.contains('open')) { closeModal(); return; }
+  }
   const ov = $id('overlay');
   if (!ov.classList.contains('open')) return;
-  if (e.key === 'Escape') { closeModal(); return; }
   if (e.key === 'Enter') { e.preventDefault(); confirmManual(); }
 });
 
